@@ -1,0 +1,5 @@
+if(CONFIG_${driver_name_zephyr})
+    zephyr_library()
+    zephyr_library_sources(../src/${driver_name_file}.c ${driver_name_file}_zephyr.c)
+    zephyr_include_directories(. ../inc/.)
+endif()

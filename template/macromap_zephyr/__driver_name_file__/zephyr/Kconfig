@@ -1,0 +1,7 @@
+menuconfig ${driver_name_zephyr}
+    bool "Support ${driver_name} driver."
+    default n
+    select I2C
+    # select SPI
+    # select SENSOR
+

@@ -1,0 +1,14 @@
+description: ${driver_name} Driver.
+
+compatible: "${zephyr_dts}"
+
+include: i2c-device.yaml
+# include: spi-device.yaml
+
+properties:
+  example_prop:
+    type: int
+    required: false
+    default: 100
+    description: |
+      Some numeric property.

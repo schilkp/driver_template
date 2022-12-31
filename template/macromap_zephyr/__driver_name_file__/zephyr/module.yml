@@ -1,0 +1,6 @@
+name: ${driver_name_zephyr}
+build:
+  cmake: zephyr/.
+  kconfig: zephyr/Kconfig
+  settings:
+    dts_root: zephyr/.
