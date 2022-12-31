@@ -5,7 +5,8 @@ from string import Template
 # ###### TODO: ADAPT SETTINGS ######
 
 # Select template:
-template = "macromap"
+template = "funcpack"
+# template = "macromap"
 # template = "macromap_zephyr"
 
 # Adapt Settings:
@@ -49,8 +50,8 @@ def convert_file(input_path, output_path, settings):
             print(k)
             exit(-1)
 
-        with open(output_path, 'w') as output_file:
-            output_file.writelines(output_lines)
+    with open(output_path, 'w') as output_file:
+        output_file.writelines(output_lines)
 
 
 def convert_directory(input_path, output_path, settings):

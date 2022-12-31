@@ -1,0 +1,21 @@
+---
+device_name: ${driver_name}
+register_bitwidth: 8
+
+registers:
+  CTRL:
+    adr: 0xFF
+    brief: "CTRL register, contains 'WHO_AM_I' and reset bit."
+    fields:
+      WHO_AM_I:
+        bits:
+          lsb_position: 0
+          width: 7
+        brief: "Device ID. Always reads 0x1B."
+        enum:
+          EXPECTED_VALUE:
+            value: 0x1B
+
+      RESET:
+        bits: [7]
+        brief: "Write 1 to reset"
