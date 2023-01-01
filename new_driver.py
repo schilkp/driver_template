@@ -19,9 +19,13 @@ settings = {
     'author_name': "Philipp Schilk",
     'author_affiliation': "",
 
+    # Zephyr specific:
     'driver_name_zephyr': "MAX30101ALT",
     'zephyr_dts': "maxim,max30101alt",
     'zephyr_dts_compat': "maxim_max30101alt",
+
+    # Reginald specific:
+    'reginald_commit_lock': "f7b8958",
 }
 
 # #################################

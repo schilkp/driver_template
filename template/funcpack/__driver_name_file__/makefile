@@ -24,7 +24,7 @@ BUILDDIR=build
 SILENT?=
 
 # Reginald commit to use:
-REGINALD_COMMIT_LOCK= 9768115
+REGINALD_COMMIT_LOCK=${reginald_commit_lock}
 
 REGINALD_OUTPUT_FILES= inc/${driver_name_file}_regs.h inc/${driver_name_file}_reg_enums.h
 
