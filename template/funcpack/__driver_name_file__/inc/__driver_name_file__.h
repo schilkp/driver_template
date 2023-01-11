@@ -14,7 +14,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-#include "${driver_name_file}_reg_enums.h"
+#include "${driver_name_file}_enums.h"
 
 // ======== General Definitions ================================================
 

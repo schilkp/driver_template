@@ -4,39 +4,59 @@
 # Free to use with no restrictions but no guarantees.
 #
 
+
+################################################################################
+#               ____  _____ _____ _____ ___ _   _  ____ ____
+#              / ___|| ____|_   _|_   _|_ _| \ | |/ ___/ ___|
+#              \___ \|  _|   | |   | |  | ||  \| | |  _\___ \
+#               ___) | |___  | |   | |  | || |\  | |_| |___) |
+#              |____/|_____| |_|   |_| |___|_| \_|\____|____/
+#
+#################################################################################
+
 # Compiler + Flags
 CC=gcc
 LDFLAGS=
 CFLAGS=-Wall -Wextra -Wpedantic -Werror=vla -fsanitize=address -g -Isrc -Iinc -Itest/Unity -I.
 DEPFLAGS=-MMD -MP -MF $$(BUILDDIR)/$$*.d
 
-SOURCES=test/Unity/unity.c src/${driver_name_code}.c
+# Sources: 
+SOURCES=test/Unity/unity.c src/${driver_name_file}.c
+
+# Automatically genereated sources lists, ususally do not have to be changed:
 TEST_SOURCES=$$(wildcard test/*.c)
 TESTS=$$(addprefix $$(BUILDDIR)/,$$(TEST_SOURCES:.c=.out))
 OBJECTS=$$(addprefix $$(BUILDDIR)/,$$(SOURCES:.c=.o))
-PREPROC_EXPANDED_SRCS=$$(addprefix $$(BUILDDIR)/preproc/,$$(SOURCES))
-PREPROC_EXPANDED_TEST_SRCS=$$(addprefix $$(BUILDDIR)/preproc/,$$(TEST_SOURCES))
 DEPENDENCIES=$$(addprefix $$(BUILDDIR)/,$$(SOURCES:.c=.d))
 DEPENDENCIES+=$$(addprefix $$(BUILDDIR)/,$$(TEST_SOURCES:.c=.d))
 
 BUILDDIR=build
 
+# Set to '@' to supress commands being echoed
 SILENT?=
 
-.PHONY: all run_tests build_tests clean format doc preproc_expanded
+################################################################################
+#         ____ ___  __  __ ____ ___ _        _  _____ ___ ___  _   _
+#        / ___/ _ \|  \/  |  _ \_ _| |      / \|_   _|_ _/ _ \| \ | |
+#       | |  | | | | |\/| | |_) | || |     / _ \ | |  | | | | |  \| |
+#       | |__| |_| | |  | |  __/| || |___ / ___ \| |  | | |_| | |\  |
+#        \____\___/|_|  |_|_|  |___|_____/_/   \_\_| |___\___/|_| \_|
+#
+################################################################################
 
+.PHONY: all
 all: run_tests
 
+.PHONY: run_tests
 run_tests: build_tests
 	-python3 scripts/run_tests.py $$(TESTS)
 
+.PHONY: build_tests
 build_tests: $$(TESTS)
 
+.PHONY: clean
 clean:
 	rm -rf $$(BUILDDIR)
-
-format:
-	python3 scripts/clang_format.py
 
 # Link tests:
 $$(BUILDDIR)/%.out: $$(BUILDDIR)/%.o $$(OBJECTS)
@@ -47,17 +67,19 @@ $$(BUILDDIR)/%.o: %.c makefile
 	@mkdir -p $$(dir $$@)
 	$$(SILENT) $$(CC) -c $$(CFLAGS) $$(DEPFLAGS) $$*.c -o $$@
 
-# Generate C files with all preproc expansion:
-preproc_expanded: $$(PREPROC_EXPANDED_SRCS) $$(PREPROC_EXPANDED_TEST_SRCS)
-$$(BUILDDIR)/preproc/%.c: %.c makefile
-	@mkdir -p $$(dir $$@)
-	$$(SILENT) $$(CC) -c $$(CFLAGS) -E -C $$*.c -o $$@
 
-# Re-generate compile_commands.json using either bear or compiledb
-# GEN_COMP_COMMANDS_CMD=compiledb make
-GEN_COMP_COMMANDS_CMD=bear -- make
-compile_commands.json: clean
-	$$(GEN_COMP_COMMANDS_CMD)
+################################################################################
+#                   _   _ _____ ___ _     ___ _______   __
+#                  | | | |_   _|_ _| |   |_ _|_   _\ \ / /
+#                  | | | | | |  | || |    | |  | |  \ V /
+#                  | |_| | | |  | || |___ | |  | |   | |
+#                   \___/  |_| |___|_____|___| |_|   |_|
+#
+################################################################################
+
+.PHONY: format
+format:
+	python3 scripts/clang_format.py
 
 # Generate documentation using doxygen:
 doc:

@@ -25,7 +25,7 @@ settings = {
     'zephyr_dts_compat': "maxim_max30101alt",
 
     # Reginald specific:
-    'reginald_commit_lock': "f7b8958",
+    'reginald_commit_lock': "8ec6629",
 }
 
 # #################################

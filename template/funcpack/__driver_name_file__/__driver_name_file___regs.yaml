@@ -1,6 +1,6 @@
 ---
-device_name: ${driver_name}
-register_bitwidth: 8
+map_name: ${driver_name}
+default_register_bitwidth: 8
 
 registers:
   CTRL:
@@ -8,14 +8,12 @@ registers:
     brief: "CTRL register, contains 'WHO_AM_I' and reset bit."
     fields:
       WHO_AM_I:
-        bits:
-          lsb_position: 0
-          width: 7
+        bits: 6-0
         brief: "Device ID. Always reads 0x1B."
         enum:
           EXPECTED_VALUE:
-            value: 0x1B
+            val: 0x1B
 
       RESET:
-        bits: [7]
+        bits: 7
         brief: "Write 1 to reset"
