@@ -76,7 +76,7 @@ ${driver_name_code}_err_t validate_handle(const struct ${driver_name_code}_h *h)
   ${driver_name_code}_err_t err = E_${driver_name_macro}_SUCCESS;
 
   if (h == 0) {
-    err |= E_${driver_name_macro}_NULLPTR_ERR;
+    return E_${driver_name_macro}_NULLPTR_ERR;
   }
 
   if (h->read_regs == 0) {
