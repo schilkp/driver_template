@@ -26,6 +26,7 @@ Note: Most development utils only run under linux for now. Sorry.
   - standard posix tools + GNU make 
   - python 3.10+, including venv
   - llvm's clang-format 13+
+  - doxygen 1.9.5+
   - (optional) llvm's clangd 13+
   - (optional) [bear](https://github.com/rizsotto/Bear), to generate a compile_commands.json for clangd.
 
