@@ -41,9 +41,9 @@ static int zephyr_${driver_name_code}_init(const struct device *dev) {
 #define ${driver_name_macro}_DEFINE(_inst_)                                                                                     \
                                                                                                                        \
   /* Declare all driver instance specific functions: */                                                                \
-  ${driver_name_code}_err_t ${driver_name_code}_read_regs_##_inst_(uint8_t reg_adr, uint32_t n, uint8_t *buf);                               \
-  ${driver_name_code}_err_t ${driver_name_code}_write_regs_##_inst_(uint8_t reg_adr, uint32_t n, const uint8_t *buf);                        \
-  void ${driver_name_code}_log_##_inst_(char *msg, bool is_err, bool has_int_arg, uint32_t arg);                                  \
+  static ${driver_name_code}_err_t ${driver_name_code}_read_regs_##_inst_(uint8_t reg_adr, uint32_t n, uint8_t *buf);                               \
+  static ${driver_name_code}_err_t ${driver_name_code}_write_regs_##_inst_(uint8_t reg_adr, uint32_t n, const uint8_t *buf);                        \
+  static void ${driver_name_code}_log_##_inst_(char *msg, bool is_err, bool has_int_arg, uint32_t arg);                                  \
                                                                                                                        \
   /* Register this specific driver instance for logging: */                                                            \
   LOG_INSTANCE_REGISTER(${driver_name_code}alt, _inst_, CONFIG_LOG_DEFAULT_LEVEL)                                                 \
@@ -64,7 +64,7 @@ static int zephyr_${driver_name_code}_init(const struct device *dev) {
               .log        = &${driver_name_code}_log_##_inst_,                                                                    \
               .sensor_conf =                                                                                           \
                   {                                                                                                    \
-                    0 \* TODO *\ \
+                    0 /* TODO */ \
                   },                                                                                                   \
           },                                                                                                           \
       .logging = {0, LOG_INSTANCE_PTR_INIT(log, ${driver_name_code}alt, _inst_)},                                                 \
@@ -72,20 +72,20 @@ static int zephyr_${driver_name_code}_init(const struct device *dev) {
                                                                                                                        \
   /* Implement the read_regs and write_regs functions with the signature expected by the generic driver                \
    * for this driver instance: */                                                                                      \
-  ${driver_name_code}_err_t ${driver_name_code}_read_regs_##_inst_(uint8_t reg_adr, uint32_t n, uint8_t *buf) {                              \
+  static ${driver_name_code}_err_t ${driver_name_code}_read_regs_##_inst_(uint8_t reg_adr, uint32_t n, uint8_t *buf) {                              \
     if (i2c_burst_read_dt(&(${driver_name_code}_config_##_inst_.i2c), reg_adr, buf, n) != 0) {                                    \
       return E_${driver_name_macro}_COM_ERR;                                                                                       \
     }                                                                                                                  \
     return E_${driver_name_macro}_SUCCESS;                                                                                         \
   }                                                                                                                    \
-  ${driver_name_code}_err_t ${driver_name_code}_write_regs_##_inst_(uint8_t reg_adr, uint32_t n, const uint8_t *buf) {                       \
+  static ${driver_name_code}_err_t ${driver_name_code}_write_regs_##_inst_(uint8_t reg_adr, uint32_t n, const uint8_t *buf) {                       \
     if (i2c_burst_write_dt(&(${driver_name_code}_config_##_inst_.i2c), reg_adr, buf, n) != 0) {                                   \
       return E_${driver_name_macro}_COM_ERR;                                                                                       \
     }                                                                                                                  \
     return E_${driver_name_macro}_SUCCESS;                                                                                         \
   }                                                                                                                    \
   /* Implement the instance-specific log function: */                                                                  \
-  void ${driver_name_code}_log_##_inst_(char *msg, bool is_err, bool has_int_arg, uint32_t arg) {                                 \
+  static void ${driver_name_code}_log_##_inst_(char *msg, bool is_err, bool has_int_arg, uint32_t arg) {                                 \
     if (is_err) {                                                                                                      \
       if (has_int_arg) {                                                                                               \
         LOG_INST_ERR(${driver_name_code}_data_##_inst_.logging.log, "%s 0x%x", msg, arg);                                         \
