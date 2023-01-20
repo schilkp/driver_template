@@ -49,7 +49,7 @@ static int zephyr_${driver_name_code}_init(const struct device *dev) {
   LOG_INSTANCE_REGISTER(${driver_name_code}alt, _inst_, CONFIG_LOG_DEFAULT_LEVEL)                                                 \
                                                                                                                        \
   /* Create the driver config, which contains the i2c_dt_spec for this instance: */                                    \
-  static struct ${driver_name_code}_config ${driver_name_code}_config_##_inst_ = {                                                           \A
+  static struct ${driver_name_code}_config ${driver_name_code}_config_##_inst_ = {                                                           \
       .i2c = I2C_DT_SPEC_INST_GET(_inst_),                                                                             \
   };                                                                                                                   \
                                                                                                                        \
