@@ -5,27 +5,27 @@ from string import Template
 # ###### TODO: ADAPT SETTINGS ######
 
 # Select template:
-template = "funcpack"
+# template = "funcpack"
 # template = "macromap"
-# template = "macromap_zephyr"
+template = "macromap_zephyr"
 
 # Adapt Settings:
 settings = {
-    'driver_name': "MAX30101",
-    'driver_name_code': "max30101",
-    'driver_name_macro': "MAX30101",
-    'driver_name_file': "max30101",
+    'driver_name': "MAX77654",
+    'driver_name_code': "max77654",
+    'driver_name_macro': "MAX77654",
+    'driver_name_file': "max77654",
 
     'author_name': "Philipp Schilk",
     'author_affiliation': "",
 
     # Zephyr specific:
-    'driver_name_zephyr': "MAX30101ALT",
-    'zephyr_dts': "maxim,max30101alt",
-    'zephyr_dts_compat': "maxim_max30101alt",
+    'driver_name_zephyr': "REGULATOR_MAX77654",
+    'zephyr_dts': "maxim,regulator_max77654",
+    'zephyr_dts_compat': "maxim_regulator_max77654",
 
     # Reginald specific:
-    'reginald_commit_lock': "e883521",
+    'reginald_commit_lock': "b4c54b7",
 }
 
 # #################################
