@@ -5,16 +5,16 @@ from string import Template
 # ###### TODO: ADAPT SETTINGS ######
 
 # Select template:
-# template = "funcpack"
+template = "funcpack"
 # template = "macromap"
-template = "macromap_zephyr"
+# template = "macromap_zephyr"
 
 # Adapt Settings:
 settings = {
-    'driver_name': "MAX77654",
-    'driver_name_code': "max77654",
-    'driver_name_macro': "MAX77654",
-    'driver_name_file': "max77654",
+    'driver_name': "LSM6DSM",
+    'driver_name_code': "lsm6dsm",
+    'driver_name_macro': "lsm6dsm",
+    'driver_name_file': "lsm6dsm",
 
     'author_name': "Philipp Schilk",
     'author_affiliation': "",
@@ -25,7 +25,7 @@ settings = {
     'zephyr_dts_compat': "maxim_regulator_max77654",
 
     # Reginald specific:
-    'reginald_commit_lock': "b4c54b7",
+    'reginald_commit_lock': "05a24b5",
 }
 
 # #################################
