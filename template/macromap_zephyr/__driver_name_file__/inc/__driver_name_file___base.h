@@ -96,7 +96,7 @@ struct ${driver_name_code}_h {
  * @brief Reset the device.
  *
  * @param h Pointer to the device-specific handle struct.
- * @return @ref E_${driver_name_macro}_SUCCESS if successful, otherwise an error code from @ref E_${driver_name_macro}_COM_ERR.
+ * @return @ref E_${driver_name_macro}_SUCCESS if successful, otherwise an error code from @ref ${driver_name_code}_err_t.
  */
 ${driver_name_code}_err_t ${driver_name_code}_reset(const struct ${driver_name_code}_h *h);
 
@@ -109,7 +109,7 @@ ${driver_name_code}_err_t ${driver_name_code}_reset(const struct ${driver_name_c
  * @note This function should be called before any other driver functions are called.
  *
  * @param h Pointer to the device-specific handle struct.
- * @return @ref E_${driver_name_macro}_SUCCESS if successful, otherwise an error code from @ref E_${driver_name_macro}_COM_ERR.
+ * @return @ref E_${driver_name_macro}_SUCCESS if successful, otherwise an error code from @ref ${driver_name_code}_err_t.
  */
 ${driver_name_code}_err_t ${driver_name_code}_init(const struct ${driver_name_code}_h *h);
 
