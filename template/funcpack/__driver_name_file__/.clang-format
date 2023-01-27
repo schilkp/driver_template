@@ -7,4 +7,5 @@ AllowShortEnumsOnASingleLine:         false
 AlignConsecutiveMacros:               true
 IndentCaseLabels:                     true
 IndentGotoLabels:                     true
+ReflowComments:                       false
 

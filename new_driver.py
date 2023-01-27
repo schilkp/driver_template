@@ -11,13 +11,13 @@ template = "funcpack"
 
 # Adapt Settings:
 settings = {
-    'driver_name': "LSM6DSM",
-    'driver_name_code': "lsm6dsm",
-    'driver_name_macro': "lsm6dsm",
-    'driver_name_file': "lsm6dsm",
+    'driver_name': "LSM6DSV16BX",
+    'driver_name_code': "lsm6dsv16bx",
+    'driver_name_macro': "LSM6DSV6BX",
+    'driver_name_file': "lsm6dsv16bx",
 
     'author_name': "Philipp Schilk",
-    'author_affiliation': "",
+    'author_affiliation': "PBL D-ITET ETHZ",
 
     # Zephyr specific:
     'driver_name_zephyr': "REGULATOR_MAX77654",
